@@ -1,0 +1,42 @@
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('/images/login-image.jpg');">
+        <div class="filter"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 offset-lg-4 col-sm-6 offset-sm-3">
+                        <div class="card card-register">
+                            <h3 class="title">Welcome To Stack</h3>
+                            <a href="/auth/facebook" class="btn btn-info btn-block btn-round" id="facebook2">SIGN UP WITH FACEBOOK</a>
+                            <form class="register-form" method="post" action="/process-signup">
+                                <div class="loginor text-center">
+                                  <p>or</p>
+                                  <p class="loginemail">Sign up with your email address</p>
+                                </div>
+                                <%if (typeof feedbackMessage !== 'undefined') {%>
+                                  <br />
+                                  <p class="error">
+                                    <%= feedbackMessage %>
+                                  </p>
+                                <%}%>
+                                <label for="name-input">First Name</label>
+                                <input id="name-input" type="text" name="firstName" class="form-control" placeholder="First Name">
+
+                                <label for="email-input">Email</label>
+                                <input id="email-input" type="text" name="signupEmail" class="form-control" placeholder="Email">
+
+                                <label for="password-input">Password</label>
+                                <input id="password-input" type="password" name="signupPassword" class="form-control" placeholder="Password">
+                                <button class="btn btn-danger btn-block btn-round">SIGN UP</button>
+                            </form>
+                            <div class="forgot">
+                                Already have an account? <a href="/login" > Log In</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      <div class="footer register-footer text-center">
+        <h6>&copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Ryan Wang</h6>
+      </div>
+            </div>
+    </div>
+</div>

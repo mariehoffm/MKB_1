@@ -1,0 +1,104 @@
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-7">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title"><%=path.charAt(0).toUpperCase() + path.slice(1)%></h4>
+                    </div>
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th class="sm-col">#</th>
+                                      <th class="big-col">Front</th>
+                                      <th class="big-col">Back</th>
+                                      <th class="md-col">Edit Card</th>
+                                      <th class="sm-col">Delete</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <% singleStack.cards.forEach((oneCard, index) => { %>
+                                      <tr class="frontback">
+                                        <th scope="row"><%= index + 1 %></th>
+                                        <td class="col-md-4"><%= oneCard.cardFront %></td>
+                                        <td class="col-md-4"><%= oneCard.cardBack %></td>
+                                        <td class="col-md-2">
+                                          <button type="button" data-toggle="modal" data-target="#editCard" class="btn btn-success edit-button">Edit Card</button>
+                                        </td>
+                                        <td class="col-md-2">
+                                          <form method="post" class="deleteForm" action="/dashboard/<%= singleStack._id %>/<%= oneCard._id %>/delete">
+                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                          </form>
+                                        </td>
+                                      </tr>
+                                    <% }) %>
+                                  </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center">
+                              <button type="button" class="btn btn-primary btn-default" data-toggle="modal" data-target="#newCard">
+                                Add Card
+                              </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+
+<%# New Card Modal -----------------------------------------%>
+
+<div class="modal fade" id="newCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Card</h4>
+      </div>
+      <form method="post" action="/dashboard/<%=singleStack._id%>">
+        <div class="modal-body">
+          <label for="frontLabel">Card Front</label>
+          <textarea id="frontLabel" name="cardFront" class="form-control" rows="5"></textarea>
+          <br />
+          <label for="backLabel">Card Back</label>
+          <textarea id="backLabel" name="cardBack" class="form-control" rows="5"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add Card</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%# Edit Card Modal -----------------------------------------%>
+
+<div class="modal fade" id="editCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Card</h4>
+      </div>
+      <form class="editForm" method="post">
+        <div class="modal-body">
+          <label for="frontLabel">Card Front</label>
+          <textarea id="frontLabel" name="cardFront" class="editFrontLabel form-control" rows="5"></textarea>
+          <br />
+          <label for="backLabel">Card Back</label>
+          <textarea id="backLabel" name="cardBack" class="editBackLabel form-control" rows="5"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

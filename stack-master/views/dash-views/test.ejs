@@ -1,0 +1,45 @@
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header text-center">
+                        <h4 class="title"><%=path.charAt(0).toUpperCase() + path.slice(1)%></h4>
+                        <hr />
+                    </div>
+                    <div class="content text-center">
+                      <% singleStack.cards.forEach((oneCard, index) =>
+                    { %>
+                        <div id="chartHours" class="ct-chart ct-chart<%=index%>">
+                          <div class="prompt prompt<%=index%>">
+                            <p class="promptText wordwrap"><%= oneCard.cardFront %></p>
+                          </div>
+                          <div class="answer answer<%=index%>">
+                            <a class="btn btn-primary btn-lg answerbtn">Show Answer</a>
+                            <p class="answerText wordwrap"><%= oneCard.cardBack %></p>
+                          </div>
+                        </div>
+
+                          <div class="footer text-center cardFooter cardFooter<%=index%>">
+                              <div class="chart-legend container-fluid">
+                                  <a class="btn btn-success btn-lg testbtn">Next</a>
+                              </div>
+
+                              <hr>
+                              <div class="stats">
+                                  <i class="ti-reload"></i> <span class="cardCount"></span>
+                              </div>
+                          </div>
+                        <% }) %>
+                        <div class="endTestTop">
+                          <h3>Finish!</h3>
+                        </div>
+                        <div class="endTest">
+                          <a href="/dashboard/home" class="btn btn-primary btn-lg"><i class="ti-back-left"></i><span class="dashBtn">Dashboard</span></a>
+                          <button onClick="window.location.reload()" class="btn btn-success btn-lg"><i class="ti-reload"></i><span class="restartBtn">Restart</span></button>
+                        </div>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
